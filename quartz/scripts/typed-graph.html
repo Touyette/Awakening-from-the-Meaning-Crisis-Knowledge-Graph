@@ -59,21 +59,21 @@
 </div>
 <script>
 const PREDICATE_COLORS = {
-  developed_by: "#4e79a7",
-  builds_on: "#59a14f",
-  contrasts_with: "#e15759",
-  responds_to: "#f28e2b",
-  part_of: "#76b7b2",
-  exemplified_by: "#edc949",
-  related: "#b07aa1",
+  developed_by: "#3da9fc",
+  builds_on: "#06d6a0",
+  contrasts_with: "#ef476f",
+  responds_to: "#ffa62b",
+  part_of: "#17c3b2",
+  exemplified_by: "#ffd166",
+  related: "#c879ff",
 };
 const TYPE_COLORS = {
-  concept: "#7b97aa",
-  thinker: "#e0a458",
-  tradition: "#84a59d",
-  practice: "#d46a6a",
-  episode: "#9d8189",
-  moc: "#cfcfcf",
+  concept: "#4d96ff",
+  thinker: "#ff9f1c",
+  tradition: "#2ec4b6",
+  practice: "#ef476f",
+  episode: "#b388eb",
+  moc: "#e0e0e0",
 };
 
 fetch("../static/typed-graph-data.json")
@@ -110,7 +110,6 @@ function render(data) {
     data.nodes.map((n) => ({
       id: n.id,
       label: n.title,
-      title: n.type,
       color: TYPE_COLORS[n.type] ?? "#999",
       shape: "dot",
       size: nodeSize(n.id, 12),
