@@ -44,8 +44,8 @@
 
     <h2>Node size by links</h2>
     <div class="row">
-      <input type="range" id="size-factor" min="0" max="14" step="0.5" value="6" style="flex: 1" />
-      <span id="size-factor-value">6</span>
+      <input type="range" id="size-factor" min="1" max="30" step="1" value="10" style="flex: 1" />
+      <span id="size-factor-value">10&times;</span>
     </div>
 
     <h2>Node type</h2>
@@ -96,9 +96,14 @@ function render(data) {
     degree.set(e.source, (degree.get(e.source) ?? 0) + 1);
     degree.set(e.target, (degree.get(e.target) ?? 0) + 1);
   }
+  const maxDegree = Math.max(1, ...degree.values());
+  const MIN_SIZE = 4;
 
-  function nodeSize(id, factor) {
-    return Math.min(48, 5 + Math.sqrt(degree.get(id) ?? 0) * factor);
+  // Linear in degree: a node with 0 links is MIN_SIZE, the single most-linked
+  // node in the dataset (e.g. "Meaning Crisis"/"John Vervaeke") is MIN_SIZE * ratio.
+  function nodeSize(id, ratio) {
+    const d = degree.get(id) ?? 0;
+    return MIN_SIZE * (1 + (d / maxDegree) * (ratio - 1));
   }
 
   const nodes = new vis.DataSet(
@@ -108,7 +113,7 @@ function render(data) {
       title: n.type,
       color: TYPE_COLORS[n.type] ?? "#999",
       shape: "dot",
-      size: nodeSize(n.id, 6),
+      size: nodeSize(n.id, 10),
       font: { color: "#ebebec", strokeWidth: 3, strokeColor: "#161618" },
     })),
   );
@@ -178,9 +183,9 @@ function render(data) {
   const sizeFactorEl = document.getElementById("size-factor");
   const sizeFactorValueEl = document.getElementById("size-factor-value");
   sizeFactorEl.addEventListener("input", () => {
-    const factor = Number(sizeFactorEl.value);
-    sizeFactorValueEl.textContent = factor;
-    nodes.update(data.nodes.map((n) => ({ id: n.id, size: nodeSize(n.id, factor) })));
+    const ratio = Number(sizeFactorEl.value);
+    sizeFactorValueEl.textContent = ratio + "×";
+    nodes.update(data.nodes.map((n) => ({ id: n.id, size: nodeSize(n.id, ratio) })));
   });
 
   const typeFiltersEl = document.getElementById("type-filters");
