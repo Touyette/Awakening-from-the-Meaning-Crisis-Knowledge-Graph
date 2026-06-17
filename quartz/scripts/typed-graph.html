@@ -145,12 +145,12 @@ function render(data) {
       physics: {
         stabilization: { iterations: 600, fit: true },
         barnesHut: {
-          gravitationalConstant: -45000,
+          gravitationalConstant: -20000,
           centralGravity: 0.15,
-          springLength: 450,
+          springLength: 350,
           springConstant: 0.03,
           damping: 0.5,
-          avoidOverlap: 1,
+          avoidOverlap: 0.5,
         },
         minVelocity: 0.75,
       },
