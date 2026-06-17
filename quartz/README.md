@@ -1,17 +1,48 @@
-# Quartz v5
+# Awakening from the Meaning Crisis — Knowledge Graph
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+A knowledge graph of the ideas in John Vervaeke's *Awakening from the Meaning
+Crisis* lecture series: concepts, thinkers, traditions, and practices, linked by
+typed relationships (`builds_on`, `contrasts_with`, `responds_to`, `part_of`,
+`exemplified_by`, `developed_by`).
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+**Live site:** https://touyette.github.io/AMC-KG/
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+This is a derivative study aid built from Vervaeke's lectures. All credit for the
+ideas themselves belongs to him — notes here paraphrase his framing and never
+reproduce transcript text.
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+## What's in this repo
 
-## Sponsors
+This repo only contains the **published site**, built with [Quartz
+5](https://quartz.jzhao.xyz/). The source Obsidian vault (the actual notes,
+transcripts, and authoring tooling) lives outside of this published folder and
+is not part of the public site.
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+```
+content/        the notes that make up the site (concepts, thinkers, traditions,
+                 practices, episodes, MOCs)
+quartz.config.yaml   site configuration (title, theme, plugins)
+```
+
+## Building locally
+
+```bash
+npm ci
+npx quartz plugin install
+npx quartz build --serve
+```
+
+Then open http://localhost:8080.
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which rebuilds the
+site with Quartz and publishes it to GitHub Pages automatically.
+
+## Known limitation
+
+Typed relationships are authored as Dataview inline fields (`predicate::
+[[Target]]`) in the source vault, which require the Obsidian Dataview plugin.
+On this static site, the wikilinks still work (they feed the graph view and
+backlinks), but the field syntax itself renders as literal text rather than
+styled prose.
