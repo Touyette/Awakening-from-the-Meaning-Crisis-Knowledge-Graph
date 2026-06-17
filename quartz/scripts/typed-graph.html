@@ -116,14 +116,14 @@ function render(data) {
     { nodes, edges },
     {
       physics: {
-        stabilization: { iterations: 400, fit: true },
+        stabilization: { iterations: 600, fit: true },
         barnesHut: {
-          gravitationalConstant: -12000,
-          centralGravity: 0.3,
-          springLength: 150,
-          springConstant: 0.04,
+          gravitationalConstant: -30000,
+          centralGravity: 0.15,
+          springLength: 280,
+          springConstant: 0.03,
           damping: 0.5,
-          avoidOverlap: 0.5,
+          avoidOverlap: 1,
         },
         minVelocity: 0.75,
       },
@@ -170,6 +170,13 @@ function render(data) {
   }
 
   function applyFilters() {
+    // Updating the DataSets makes vis-network re-stabilize, and
+    // stabilization.fit applies on every restabilization (not just the
+    // first) — without this, toggling a filter snaps the view back to
+    // fit-all and discards whatever pan/zoom the user had.
+    const viewPosition = network.getViewPosition();
+    const scale = network.getScale();
+
     nodes.update(
       data.nodes.map((n) => ({ id: n.id, hidden: !enabledTypes.has(n.type) })),
     );
@@ -182,6 +189,8 @@ function render(data) {
           !enabledTypes.has(nodeType(e.target)),
       })),
     );
+
+    network.moveTo({ position: viewPosition, scale, animation: false });
   }
 
   const nodeTypeMap = new Map(data.nodes.map((n) => [n.id, n.type]));
