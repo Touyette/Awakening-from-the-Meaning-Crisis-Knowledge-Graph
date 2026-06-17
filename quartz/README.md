@@ -5,9 +5,9 @@ Crisis* lecture series: concepts, thinkers, traditions, and practices, linked by
 typed relationships (`builds_on`, `contrasts_with`, `responds_to`, `part_of`,
 `exemplified_by`, `developed_by`).
 
-**Live site:** https://touyette.github.io/AMC-KG/
+**Live site:** https://touyette.github.io/Awakening-from-the-Meaning-Crisis-Knowledge-Graph/
 
-This is a derivative study aid built from Vervaeke's lectures. All credit for the
+This is a derivative visualization of Vervaeke's work. All credit for the
 ideas themselves belongs to him — notes here paraphrase his framing and never
 reproduce transcript text.
 

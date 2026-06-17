@@ -1,6 +1,6 @@
 # Awakening from the Meaning Crisis — Knowledge Graph
 
-### [Click here to see the knowledge graph →](https://touyette.github.io/AMC-KG/)
+### [Click here to see the knowledge graph →](https://touyette.github.io/Awakening-from-the-Meaning-Crisis-Knowledge-Graph/)
 
 That link is the website — a browsable, searchable map of the ideas from John
 Vervaeke's *Awakening from the Meaning Crisis* lecture series, with a graph

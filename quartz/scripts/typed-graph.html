@@ -42,12 +42,6 @@
     <h1>Typed Graph</h1>
     <div id="count"></div>
 
-    <h2>Node size by links</h2>
-    <div class="row">
-      <input type="range" id="size-factor" min="1" max="30" step="1" value="12" style="flex: 1" />
-      <span id="size-factor-value">12&times;</span>
-    </div>
-
     <h2>Node type</h2>
     <div id="type-filters"></div>
 
@@ -179,14 +173,6 @@ function render(data) {
       network.setOptions({ physics: false });
       network.moveTo({ position: viewPosition, scale, animation: false });
     });
-  });
-
-  const sizeFactorEl = document.getElementById("size-factor");
-  const sizeFactorValueEl = document.getElementById("size-factor-value");
-  sizeFactorEl.addEventListener("input", () => {
-    const ratio = Number(sizeFactorEl.value);
-    sizeFactorValueEl.textContent = ratio + "×";
-    nodes.update(data.nodes.map((n) => ({ id: n.id, size: nodeSize(n.id, ratio) })));
   });
 
   const typeFiltersEl = document.getElementById("type-filters");

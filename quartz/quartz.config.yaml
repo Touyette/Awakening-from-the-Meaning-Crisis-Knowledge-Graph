@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: null
   locale: en-US
-  baseUrl: touyette.github.io/AMC-KG
+  baseUrl: touyette.github.io/Awakening-from-the-Meaning-Crisis-Knowledge-Graph
   ignorePatterns:
     - private
     - templates
@@ -198,7 +198,7 @@ plugins:
     enabled: true
     options:
       links:
-        Source: https://github.com/Touyette/AMC-KG
+        Source: https://github.com/Touyette/Awakening-from-the-Meaning-Crisis-Knowledge-Graph
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer

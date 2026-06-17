@@ -7,7 +7,7 @@ lecture series — concepts, thinkers, traditions, and practices, linked by type
 relationships (builds on, contrasts with, responds to, part of, exemplified by,
 developed by).
 
-This is a derivative study aid built from Vervaeke's lectures; all credit for the
+This is a derivative visualization of Vervaeke's work; all credit for the
 ideas themselves belongs to him. Notes here paraphrase his framing and do not
 reproduce transcript text.
 
