@@ -9,6 +9,8 @@ view showing how everything connects.
 All credit for the ideas goes to John Vervaeke and the giants who stood before him; this is just a vizualization of their work. 
 from his lectures.
 
+![Typed graph of the knowledge graph](TypedKG-AMC.png)
+
 ---
 
 Everything in this repository is the source code that builds that website
