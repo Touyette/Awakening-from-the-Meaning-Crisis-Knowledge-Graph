@@ -24,5 +24,4 @@ Romanticism arose as the cultural immune response to the Enlightenment's disench
 ## Relationships
 responds_to:: [[Meaning Crisis]], [[Disenchantment]]
 contrasts_with:: [[Enlightenment]], [[Scientific Naturalism]]
-part_of:: [[Traditions]]
 related:: [[Infinity of Reality]], [[Final Participation]], [[Will to Live]], [[Nihilism]], [[Owen Barfield]]

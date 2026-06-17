@@ -36,6 +36,10 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install Dependencies
         run: npm ci
+      - name: Fix Quartz CLI exec permission
+        # Windows git doesn't track the executable bit, so this file gets checked
+        # out non-executable on Linux runners, breaking the npx quartz shebang.
+        run: chmod +x quartz/bootstrap-cli.mjs
       - name: Install Quartz plugins
         run: npx quartz plugin install
       - name: Build Quartz
