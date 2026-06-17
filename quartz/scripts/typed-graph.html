@@ -115,11 +115,31 @@ function render(data) {
     document.getElementById("graph"),
     { nodes, edges },
     {
-      physics: { stabilization: true, barnesHut: { gravitationalConstant: -3000, springLength: 120 } },
-      interaction: { hover: true, tooltipDelay: 100 },
+      physics: {
+        stabilization: { iterations: 400, fit: true },
+        barnesHut: {
+          gravitationalConstant: -12000,
+          centralGravity: 0.3,
+          springLength: 150,
+          springConstant: 0.04,
+          damping: 0.5,
+          avoidOverlap: 0.5,
+        },
+        minVelocity: 0.75,
+      },
+      interaction: { hover: true, tooltipDelay: 100, dragNodes: true },
       edges: { smooth: { type: "continuous" } },
     },
   );
+
+  // Once the layout settles, freeze it so it doesn't drift forever; dragging a
+  // node still works (vis re-enables physics briefly to let it settle again).
+  network.on("stabilizationIterationsDone", () => network.setOptions({ physics: false }));
+  network.on("dragStart", () => network.setOptions({ physics: true }));
+  network.on("dragEnd", () => {
+    network.once("stabilizationIterationsDone", () => network.setOptions({ physics: false }));
+    network.stabilize(100);
+  });
 
   const typeFiltersEl = document.getElementById("type-filters");
   for (const t of nodeTypes) {
